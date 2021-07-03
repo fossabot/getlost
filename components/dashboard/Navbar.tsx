@@ -1,9 +1,18 @@
-import { Avatar, Badge, Link, Popover, Text, Tooltip } from '@geist-ui/react';
+import {
+  Avatar,
+  Badge,
+  Button,
+  Link,
+  Popover,
+  Text,
+  Tooltip,
+} from '@geist-ui/react';
 import { DashboardNavbarProps } from '../../lib/interfaces';
 import NextLink from 'next/link';
+import { PlusSquare } from '@geist-ui/react-icons';
 
 export default function DashboardNavbar(props: DashboardNavbarProps) {
-  const { user } = props;
+  const { user, isNewSiteButtonVisible } = props;
 
   const avatarPopoverContent = () => {
     return (
@@ -63,9 +72,21 @@ export default function DashboardNavbar(props: DashboardNavbarProps) {
         </div>
       </NextLink>
       <div className='absolute right-48'>
-        <Popover content={avatarPopoverContent} placement='leftStart'>
-          <Avatar src={user?.picture} size='small' className='cursor-pointer' />
-        </Popover>
+        <div className='flex items-center justify-between'>
+          {isNewSiteButtonVisible && (
+            <Button size='small' auto type='success' className='mr-3'>
+              Add new site
+              <PlusSquare className='inline-block w-5 h-5 ml-1' />
+            </Button>
+          )}
+          <Popover content={avatarPopoverContent} placement='leftStart'>
+            <Avatar
+              src={user?.picture}
+              size='small'
+              className='cursor-pointer'
+            />
+          </Popover>
+        </div>
       </div>
     </div>
   );

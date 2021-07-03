@@ -8,9 +8,9 @@ Before releasing the APP, make sure that the release's content is tested and in 
 
 Also, wait for the continuous deployment to succeed before releasing it. If not, fix the bug before releasing it.
 
-## Release with [*Vercel CLI*][vercel-cli]
+## Release with [_Vercel CLI_][vercel-cli]
 
-Now, you should be able to release the APP by using the [*Vercel CLI*][vercel-cli]. To do so, run these commands in a
+Now, you should be able to release the APP by using the [_Vercel CLI_][vercel-cli]. To do so, run these commands in a
 shell:
 
 ```shell

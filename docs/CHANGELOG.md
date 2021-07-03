@@ -21,14 +21,12 @@ Visit _[Keep a Changelog][changelog]_ for more information.
 
 ### Added
 
-- Basic authentication system with [*Auth0*][auth0]
+- Basic authentication system with [_Auth0_][auth0]
 - Simple Dashboard shell
-- Continuous Integration (CI) with [*Github Actions*][github-actions]
+- Continuous Integration (CI) with [_Github Actions_][github-actions]
 
 <!-- Links -->
 
 [changelog]: https://keepachangelog.com/en/1.1.0/
-
 [github-actions]: https://docs.github.com/en/actions
-
 [auth0]: https://auth0.com

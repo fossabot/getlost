@@ -223,6 +223,11 @@
     "@types/node" "*"
     "@types/responselike" "*"
 
+"@types/dumb-passwords@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@types/dumb-passwords/-/dumb-passwords-0.2.0.tgz#e70fbc7f615e5eb5b7faf7c386e99f3238522be3"
+  integrity sha512-PAqgf2VHIkXYuwiFHsP8MltoIeQRAYtYENC5Hg5YAgHT4Kz6Ynf2EJzreuGtPJiHxcryxr3gKWPcb9XdgSdHnQ==
+
 "@types/http-cache-semantics@*":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/http-cache-semantics/-/http-cache-semantics-4.0.0.tgz#9140779736aa2655635ee756e2467d787cfe8a2a"
@@ -961,6 +966,11 @@ domain-browser@^1.1.1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.2.0.tgz#3d31f50191a6749dd1375a7f522e823d42e54eda"
   integrity sha512-jnjyiM6eRyZl2H+W8Q/zLMA481hzi0eszAaBUzIVnmYVDBbnLxVNnfu1HgEBvCbL+71FrxMl3E6lpKH7Ge3OXA==
+
+dumb-passwords@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/dumb-passwords/-/dumb-passwords-0.2.1.tgz#efaba4fdc13b27d446d4b11a5f303357649ada32"
+  integrity sha1-76uk/cE7J9RG1LEaXzAzV2Sa2jI=
 
 electron-to-chromium@^1.3.634, electron-to-chromium@^1.3.723:
   version "1.3.766"
@@ -2307,6 +2317,11 @@ react-dom@17.0.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     scheduler "^0.20.2"
+
+react-hook-form@^7.8.2:
+  version "7.10.0"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.10.0.tgz#665c9897957a2a8bbf720cef9e913ba1b22b0e86"
+  integrity sha512-J6jJDw61TDNG0cEyLlYKUTPTwJH1Gfp8S8+m5Dt3mLY5vEy7UwKr60rl11ESofKmliFH8DconTVFnZgblhGvyg==
 
 react-is@16.13.1, react-is@^16.8.1:
   version "16.13.1"

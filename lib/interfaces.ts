@@ -7,6 +7,8 @@ export interface NavBarProps {
 
 export interface DashboardNavbarProps {
   user: UserProfile;
+  isNewSiteButtonVisible: boolean;
+  isDashboardBadgeVisible: boolean;
 }
 
 export interface SiteCardProps {
@@ -26,4 +28,12 @@ export interface SiteProps {
   site_login_details: SiteLoginDetails;
 }
 
-export interface SettingCardProps {}
+export interface NewSiteFormValues {
+  site_name: string;
+  site_url: string;
+  site_desc: string;
+  password: string;
+  expiration_hours: string;
+  expiration_days: string;
+  expiration_months: string;
+}
