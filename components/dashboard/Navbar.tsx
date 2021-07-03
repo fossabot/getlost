@@ -1,5 +1,6 @@
 import { Avatar, Badge, Link, Popover, Text, Tooltip } from '@geist-ui/react';
 import { DashboardNavbarProps } from '../../lib/interfaces';
+import NextLink from 'next/link';
 
 export default function DashboardNavbar(props: DashboardNavbarProps) {
   const { user } = props;
@@ -41,19 +42,26 @@ export default function DashboardNavbar(props: DashboardNavbarProps) {
 
   return (
     <div className='fixed z-30 flex items-center justify-between w-full px-16 mb-12 border-b border-gray-200 bg-gray-50'>
-      <div className='flex items-center justify-between'>
-        <img src='/getlost.png' alt='GetLost' width='25px' />
-        <Text b p className='ml-2 text-2xl'>
-          Get
-          <span className='px-1 bg-gray-900 rounded-md text-gray-50'>Lost</span>
-        </Text>
-        <Badge
-          type='success'
-          size='small'
-          className='invisible ml-2 sm:visible'>
-          <strong>DASHBOARD</strong>
-        </Badge>
-      </div>
+      <NextLink href='/dashboard'>
+        <div className='flex items-center justify-between cursor-pointer select-none'>
+          <img src='/getlost.png' alt='GetLost' width='25px' />
+          <Text b p className='ml-2 text-2xl'>
+            Get
+            <span className='px-1 bg-gray-900 rounded-md text-gray-50'>
+              Lost
+            </span>
+          </Text>
+          <span>
+            <sup className='ml-1 text-gray-500'>BETA</sup>
+          </span>
+          <Badge
+            type='success'
+            size='small'
+            className='invisible ml-2 sm:visible'>
+            <strong>DASHBOARD</strong>
+          </Badge>
+        </div>
+      </NextLink>
       <div className='absolute right-48'>
         <Popover content={avatarPopoverContent} placement='leftStart'>
           <Avatar src={user?.picture} size='small' className='cursor-pointer' />

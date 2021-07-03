@@ -1,0 +1,48 @@
+name: "Create Tags"
+
+on:
+  push:
+    paths:
+      - '.env'
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set Git identity
+        env:
+          GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
+          GIT_USER_NAME: ${{ secrets.GIT_USER_NAME }}
+        run: |
+          git config user.email "$GIT_USER_EMAIL"
+          git config user.name "$GIT_USER_NAME"
+      - name: Retrieve application's version
+        run: |
+          VERSION=$( awk '/^APP_VERSION/{print $NF}' .env )
+          echo "APP_VERSION=$VERSION" >> $GITHUB_ENV
+      - name: Create tag
+        run: git tag -a "v$APP_VERSION-rc" -m "Release candidate v$APP_VERSION"
+      - name: Push tag to repository
+        run: git push --tags origin
+  draft_release:
+    needs:
+      - tag
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Retrieve application's version
+        run: |
+          VERSION=$( awk '/^APP_VERSION/{print $NF}' .env )
+          echo "APP_VERSION=$VERSION" >> $GITHUB_ENV
+      - name: Create release
+        uses: actions/create-release@v1
+        with:
+          body_path: ./.github/resources/release-body.md
+          draft: true
+          release_name: Release v${{ env.APP_VERSION }}
+          tag_name: v${{ env.APP_VERSION }}

@@ -27,20 +27,20 @@ export default function Site() {
       <DashboardNavbar user={user} />
       <div className='pt-20'>
         <Page size='large'>
-		  <Breadcrumbs className='!mb-10'>
-		    <Breadcrumbs.Item>StaticShield</Breadcrumbs.Item>
-		    <Breadcrumbs.Item>
-			  <NextLink href='/dashboard'>
-			    <Link color>Dashboard</Link>
-			  </NextLink>
-		    </Breadcrumbs.Item>
-		    <Breadcrumbs.Item>
-			  <NextLink href='/dashboard'>
-			    <Link color>Sites</Link>
-			  </NextLink>
-		    </Breadcrumbs.Item>
-		    <Breadcrumbs.Item>{siteId}</Breadcrumbs.Item>
-		  </Breadcrumbs>
+          <Breadcrumbs className='!mb-10'>
+            <Breadcrumbs.Item>GetLost</Breadcrumbs.Item>
+            <Breadcrumbs.Item>
+              <NextLink href='/dashboard'>
+                <Link color>Dashboard</Link>
+              </NextLink>
+            </Breadcrumbs.Item>
+            <Breadcrumbs.Item>
+              <NextLink href='/dashboard'>
+                <Link color>Sites</Link>
+              </NextLink>
+            </Breadcrumbs.Item>
+            <Breadcrumbs.Item>{siteId}</Breadcrumbs.Item>
+          </Breadcrumbs>
           <h1 className='text-3xl font-extrabold sm:text-4xl md:text-5xl'>
             Acme's employee register
           </h1>
