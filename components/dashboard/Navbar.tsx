@@ -40,14 +40,17 @@ export default function DashboardNavbar(props: DashboardNavbarProps) {
   };
 
   return (
-    <div className='fixed flex items-center justify-between w-full px-16 mb-12 border-b border-gray-200 bg-gray-50'>
+    <div className='fixed z-30 flex items-center justify-between w-full px-16 mb-12 border-b border-gray-200 bg-gray-50'>
       <div className='flex items-center justify-between'>
         <img src='/getlost.png' alt='GetLost' width='25px' />
         <Text b p className='ml-2 text-2xl'>
           Get
           <span className='px-1 bg-gray-900 rounded-md text-gray-50'>Lost</span>
         </Text>
-        <Badge type='success' size='small' className='ml-2'>
+        <Badge
+          type='success'
+          size='small'
+          className='invisible ml-2 sm:visible'>
           <strong>DASHBOARD</strong>
         </Badge>
       </div>
