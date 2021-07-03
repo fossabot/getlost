@@ -21,24 +21,14 @@ Visit _[Keep a Changelog][changelog]_ for more information.
 
 ### Added
 
-- Basic API with [*Kotlin*][kotlin] and [*Javalin*][javalin]
-- Continuous Integration (CI) with [*Github Actions*][github-actions] and [*Maven*][maven]
-- Continuous Deployment (CD) with [*Github Actions*][github-actions], [*Docker*][docker] and [*Heroku*][heroku]
+- Basic authentication system with [*Auth0*][auth0]
+- Simple Dashboard shell
+- Continuous Integration (CI) with [*Github Actions*][github-actions]
 
 <!-- Links -->
 
 [changelog]: https://keepachangelog.com/en/1.1.0/
 
-[docker]: https://docs.docker.com/
-
 [github-actions]: https://docs.github.com/en/actions
 
-[heroku]: https://devcenter.heroku.com/categories/reference
-
-[heroku-deploy-action]: https://github.com/AkhileshNS/heroku-deploy
-
-[javalin]: https://javalin.io/documentation
-
-[kotlin]: https://kotlinlang.org/docs/home.html
-
-[maven]: https://maven.apache.org/guides/index.html
+[auth0]: https://auth0.com
