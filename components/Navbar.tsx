@@ -5,15 +5,11 @@ import NextLink from 'next/link';
 export default function Navbar() {
   const { user, error, isLoading } = useUser();
 
-  console.log(user);
-  console.log(error);
-  console.log(isLoading);
-
   return (
     <Row className='border-b border-gray-200 !fixed !bg-gray-50 z-10'>
       <div className='text-gray-700 flex justify-around items-center !min-w-[100vw]'>
         <div className='flex items-center justify-between'>
-          <img src='/logo.svg' alt='GetLost' width='25px' />
+          <img src='/getlost.png' alt='GetLost' width='25px' />
           <Text b p className='ml-2 text-2xl'>
             Get
             <span className='px-1 bg-gray-900 rounded-md text-gray-50'>
