@@ -40,18 +40,12 @@ export default function Home() {
           <title>GetLost</title>
           <link rel='icon' href='/getlost.png' />
         </Head>
-        <img
-          src='/getlost.png'
-          alt=''
-          className='w-40 h-40 mx-auto mt-16'
-        />
+        <img src='/getlost.png' alt='' className='w-40 h-40 mx-auto mt-16' />
         <Text
           className='!font-extrabold mt-12 text-5xl sm:text-7xl bg-gradient-to-r from-black via-gray-600 to-gray-500 !text-transparent bg-clip-text'
           h1>
           Get
-          <span className='px-2 bg-gray-900 rounded-xl text-gray-50'>
-            Lost
-          </span>
+          <span className='px-2 bg-gray-900 rounded-xl text-gray-50'>Lost</span>
         </Text>
         <Text className='text-2xl'>
           GetLost is the easiest way to{' '}

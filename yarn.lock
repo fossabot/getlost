@@ -63,6 +63,11 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@fontsource/inter@^4.4.2":
+  version "4.4.5"
+  resolved "https://registry.yarnpkg.com/@fontsource/inter/-/inter-4.4.5.tgz#bce26ff9dd83898bd610924cff1342cc30d0e89a"
+  integrity sha512-eRUmB54CbyC3MhAuw2VvTPEc3wy8sFi0/1mVHaC7ZXglXcrSWXY+p8Xad/Zy8AcmS9BuqCCEH2qJbOt9XdX65Q==
+
 "@fullhuman/postcss-purgecss@^4.0.3":
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/@fullhuman/postcss-purgecss/-/postcss-purgecss-4.0.3.tgz#55d71712ec1c7a88e0d1ba5f10ce7fb6aa05beb4"

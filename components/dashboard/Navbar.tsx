@@ -45,9 +45,7 @@ export default function DashboardNavbar(props: DashboardNavbarProps) {
         <img src='/getlost.png' alt='GetLost' width='25px' />
         <Text b p className='ml-2 text-2xl'>
           Get
-          <span className='px-1 bg-gray-900 rounded-md text-gray-50'>
-            Lost
-          </span>
+          <span className='px-1 bg-gray-900 rounded-md text-gray-50'>Lost</span>
         </Text>
         <Badge type='success' size='small' className='ml-2'>
           <strong>DASHBOARD</strong>
