@@ -12,7 +12,3 @@
 8. SWR - Remote data fetching
 9. Typescript - Type checking
 10. Vercel - Hosting
-
----
-
-<a href="https://simpleanalytics.com/getlost.js.org?utm_source=getlost.js.org&utm_content=badge" referrerpolicy="origin" target="_blank"><img src="https://simpleanalyticsbadge.com/getlost.js.org?mode=dark&" loading="lazy" referrerpolicy="no-referrer" crossorigin="anonymous" /></a>
