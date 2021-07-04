@@ -28,7 +28,7 @@ export default function Home() {
         </Text>
         <Text className='text-2xl'>
           GetLost is the easiest way to{' '}
-          <span className='z-10 mx-1 heading-underline isolate whitespace-nowrap'>
+          <span className='z-10 mx-1 !select-none heading-underline isolate whitespace-nowrap'>
             password protect
           </span>{' '}
           <br />
