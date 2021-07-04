@@ -1,39 +1,9 @@
 import { Button, Divider, Page, Text, Link } from '@geist-ui/react';
-import { Code, Lock, Zap, Server } from '@geist-ui/react-icons';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import FeatureCard from '../components/FeatureCard';
-import Shield from '../components/Shield';
-import { NavBarProps } from '../lib/interfaces';
 import { useUser } from '@auth0/nextjs-auth0';
-
-const features: NavBarProps[] = [
-  {
-    feature:
-      'Password protect website with only a single line of code which GetLost provides',
-    children: <Code />,
-  },
-  {
-    feature:
-      'No database or backend is required. Everything is taken care by GetLost',
-    children: <Server />,
-  },
-  {
-    feature:
-      'Users log in to your application through a beautiful responsive page hosted on GetLost',
-    children: <Shield />,
-  },
-  {
-    feature:
-      'GetLost is framework agnostic. It works with the framework of your choice',
-    children: <Zap />,
-  },
-  {
-    feature:
-      'GetLost hashes and encrypts data multiple times so that your data stays highly secure',
-    children: <Lock />,
-  },
-];
+import features from '../lib/features';
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
