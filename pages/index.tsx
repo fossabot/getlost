@@ -2,12 +2,9 @@ import { Button, Divider, Page, Text, Link } from '@geist-ui/react';
 import Head from 'next/head';
 import Navbar from '@/components/Navbar';
 import FeatureCard from '@/components/FeatureCard';
-import { useUser } from '@auth0/nextjs-auth0';
 import features from '@/lib/features';
 
 export default function Home() {
-  const { user, error, isLoading } = useUser();
-
   return (
     <div className='text-center text-gray-900 bg-gray-50'>
       <div className='block'>
@@ -19,7 +16,13 @@ export default function Home() {
           <link rel='icon' href='/getlost.png' />
           <script async defer src='https://sa.ainul.tech/latest.js' />
         </Head>
-        <img src='/getlost.png' alt='' className='w-40 h-40 mx-auto mt-16' />
+        <img
+          src='/getlost.png'
+          alt=''
+          className='mx-auto mt-16'
+          width='160px'
+          height='160px'
+        />
         <Text
           className='!font-extrabold mt-12 text-5xl sm:text-7xl bg-gradient-to-r from-black via-gray-600 to-gray-500 !text-transparent bg-clip-text'
           h1>
@@ -28,7 +31,7 @@ export default function Home() {
         </Text>
         <Text className='text-2xl'>
           GetLost is the easiest way to{' '}
-          <span className='z-10 mx-1 !select-none heading-underline isolate whitespace-nowrap'>
+          <span className='z-10 mx-1 heading-underline isolate whitespace-nowrap'>
             password protect
           </span>{' '}
           <br />
@@ -36,12 +39,12 @@ export default function Home() {
         </Text>
 
         <div className='mt-12'>
-          <Link href={user ? '/dashboard' : '/signup'}>
+          <Link href='/signup'>
             <Button
               size='large'
               type='success'
               className='!inline-block ml-2 !shadow-md'>
-              {user ? 'Go to Dashboard →' : 'Get started →'}
+              Get Started →
             </Button>
           </Link>
         </div>

@@ -15,8 +15,20 @@ Visit _[Keep a Changelog][changelog]_ for more information.
 
 ## List of releases
 
+- [Version 0.2.0](#0.2.0) - 2021/07/04
 - [Version 0.1.1](#v0.1.1) - 2021/07/04
 - [Version 0.1.0](#v0.1.0) - 2021/07/03
+
+## Version 0.2.0 <a name="v0.2.0"></a>
+
+### Added
+
+- Integrate HarperDB to store site_data
+- Hashed password
+
+### Fixed
+
+- Minor margin issues
 
 ## Version 0.1.1 <a name="v0.1.1"></a>
 
