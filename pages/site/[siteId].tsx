@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import DashboardNavbar from '@/components/dashboard/Navbar';
-import { useUser } from '@auth0/nextjs-auth0';
+import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import {
   Card,
   Divider,
@@ -11,16 +11,30 @@ import {
   Link,
   Snippet,
   Breadcrumbs,
+  Tooltip,
 } from '@geist-ui/react';
 import NextLink from 'next/link';
-import { Code, ExternalLink, Settings } from '@geist-ui/react-icons';
+import { Code, ExternalLink, Settings, Tool } from '@geist-ui/react-icons';
 import GeneralSettingsTab from '@/components/site/GeneralSettingsTab';
 import AdvancedSettingsTab from '@/components/site/AdvancedSettingsTab';
+import fetcher from '@/lib/fetcher';
+import useSWR from 'swr';
+import { fromUnixTime, formatDistanceToNow, getUnixTime } from 'date-fns';
 
-export default function Site() {
-  const { user, error, isLoading } = useUser();
+export default withPageAuthRequired(function Site({ user }) {
   const router = useRouter();
   const { siteId } = router.query;
+
+  const data = useSWR(
+    `/api/get-site-from-site-id/?siteId=${siteId}`,
+    fetcher
+  ).data;
+
+  console.log(data);
+
+  const lastLoginTime = data?.last_login || getUnixTime(new Date()); //! new Date is to avoid error during build time
+  const date = fromUnixTime(lastLoginTime);
+  const prettifiedTime = formatDistanceToNow(date, { addSuffix: true });
 
   return (
     <div>
@@ -43,19 +57,22 @@ export default function Site() {
                 <Link color>Sites</Link>
               </NextLink>
             </Breadcrumbs.Item>
-            <Breadcrumbs.Item>{siteId}</Breadcrumbs.Item>
+            <Breadcrumbs.Item>
+              {data?.site_name || 'Loading...'}
+            </Breadcrumbs.Item>
           </Breadcrumbs>
           <h1 className='text-3xl font-extrabold sm:text-4xl md:text-5xl'>
-            {"Acme's employee register"}
-            <Link href={'https://acme.com'} target='__blank'>
-              <ExternalLink className='inline-block ml-5 !text-blue-400 hover:!text-blue-600' />
+            {data?.site_name || 'Loading...'}
+            <Link
+              href={'http://' + data?.site_url || 'Loading...'}
+              target='__blank'>
+              <Tooltip text={data?.site_url} type='secondary' placement='right'>
+                <ExternalLink className='inline-block ml-5 !text-blue-400 hover:!text-blue-600' />
+              </Tooltip>
             </Link>
           </h1>
           <Text size='large' type='secondary'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis,
-            beatae quasi distinctio ullam ea soluta quisquam recusandae
-            perferendis veniam. Odio, corporis numquam deleniti tempora sequi
-            quaerat repellat amet cumque ducimus.
+            {data?.site_desc || 'No description ¯\\_(ツ)_/¯'}
           </Text>
           <Divider volume={2} />
           <Text h2 className='my-10'>
@@ -64,16 +81,22 @@ export default function Site() {
           <Row className='flex-wrap !-ml-5 justify-evenly -mt-5 select-none'>
             <Card width='300p' className='!mx-5 !my-5' type='success' shadow>
               <Text h5>Successful Logins</Text>
-              <Text h2>59</Text>
+              <Text h2>{data?.no_of_logins}</Text>
             </Card>
             <Card width='300p' className='!mx-5 !my-5' type='warning' shadow>
               <Text h5>Unsuccessful Logins</Text>
-              <Text h2>05</Text>
+              <Text h2>{data?.no_of_failed_logins}</Text>
             </Card>
-            <Card width='300p' className='!mx-5 !my-5' type='secondary' shadow>
-              <Text h5>Last Login At (GMT)</Text>
-              <Text h2>12:45 5 June, 2021</Text>
-            </Card>
+            <Tooltip text={date.toLocaleString()} type='dark'>
+              <Card
+                width='300p'
+                className='!mx-5 !my-5'
+                type='secondary'
+                shadow>
+                <Text h5>Last Login At</Text>
+                <Text h2>{prettifiedTime}</Text>
+              </Card>
+            </Tooltip>
           </Row>
           <Divider volume={2} />
           <div>
@@ -147,4 +170,4 @@ export default function Site() {
       </div>
     </div>
   );
-}
+});

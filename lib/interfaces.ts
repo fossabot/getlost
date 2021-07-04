@@ -33,7 +33,24 @@ export interface NewSiteFormValues {
   site_url: string;
   site_desc: string;
   password: string;
-  expiration_hours: string;
-  expiration_days: string;
-  expiration_months: string;
+  expiration_days: number;
+}
+
+export interface HarperDBRecordWithoutDefaults {
+  last_login: string;
+  site_url: string;
+  max_login_duration: number;
+  max_logins: number;
+  no_of_logins: number;
+  site_desc: string;
+  no_of_failed_logins: number;
+  site_name: string;
+  user_id: string;
+  password_hash: string;
+}
+
+export interface HarperDBRecord extends HarperDBRecordWithoutDefaults {
+  id: string;
+  __createdtime__: number;
+  __updatedtime__: number;
 }

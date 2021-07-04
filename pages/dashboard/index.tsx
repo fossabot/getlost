@@ -1,40 +1,16 @@
 import NextLink from 'next/link';
-import { Breadcrumbs, Row, Text, Card } from '@geist-ui/react';
+import { Breadcrumbs, Row, Text, Card, Loading } from '@geist-ui/react';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import DashboardNavbar from '@/components/dashboard/Navbar';
 import SiteCard from '@/components/dashboard/SiteCard';
 import { SiteCardProps } from '@/lib/interfaces';
+import useSWR from 'swr';
+import fetcher from '@/lib/fetcher';
+import Skeleton from 'react-loading-skeleton';
 
 export default withPageAuthRequired(function Dashboard({ user }) {
-  const data: SiteCardProps[] = [
-    {
-      id: '1',
-      site_desc:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque impedit error quo nobis est quasi, et qui fugit officia quae.',
-      site_name: 'Test 1',
-      site_url: 'https://example.com',
-    },
-    {
-      id: '2',
-      site_desc:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto harum neque sint enim quae quibusdam nulla quidem aspernatur! Eum, nisi!',
-      site_name: 'Test 2',
-      site_url: 'https://example.com',
-    },
-    {
-      id: '3',
-      site_desc:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit libero porro hic magni ab eius, provident eligendi voluptatum nesciunt tempore. Assumenda explicabo ea sapiente eaque.',
-      site_name: 'Test 3',
-      site_url: 'https://example.com',
-    },
-    {
-      id: '4',
-      site_desc: 'Lorem ipsum dolor sit amet consectetur',
-      site_name: 'Test 4',
-      site_url: 'https://example.com',
-    },
-  ];
+  const { data, error } = useSWR('/api/fetch-sites', fetcher);
+  console.log(data);
 
   return (
     <div className='w-screen h-screen'>
@@ -57,16 +33,26 @@ export default withPageAuthRequired(function Dashboard({ user }) {
           <Text h1 className='mt-5 font-extrabold'>
             Your Sites
           </Text>
-          <div className='grid grid-flow-row mt-6 mb-20 overflow-y-scroll gap-y-8'>
-            {data.map((site) => {
+          {!data && (
+            <Skeleton
+              width={500}
+              height={150}
+              count={3}
+              style={{ marginTop: '30px' }}
+            />
+          )}
+          <div>
+            {data?.map((site) => {
               return (
-                <SiteCard
-                  site_desc={site.site_desc}
-                  site_name={site.site_name}
-                  id={site.id}
-                  key={site.id}
-                  site_url={site.site_url}
-                />
+                <div className='my-10'>
+                  <SiteCard
+                    site_desc={site.site_desc}
+                    site_name={site.site_name}
+                    id={site.id}
+                    key={site.id}
+                    site_url={site.site_url}
+                  />
+                </div>
               );
             })}
           </div>
@@ -92,4 +78,32 @@ export default withPageAuthRequired(function Dashboard({ user }) {
   );
 });
 
-// export const getServerSideProps: GetServerSideProps = withPageAuthRequired();
+// const siteCardData: SiteCardProps[] = [
+//   {
+//     id: '1',
+//     site_desc:
+//       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque impedit error quo nobis est quasi, et qui fugit officia quae.',
+//     site_name: 'Test 1',
+//     site_url: 'https://example.com',
+//   },
+//   {
+//     id: '2',
+//     site_desc:
+//       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto harum neque sint enim quae quibusdam nulla quidem aspernatur! Eum, nisi!',
+//     site_name: 'Test 2',
+//     site_url: 'https://example.com',
+//   },
+//   {
+//     id: '3',
+//     site_desc:
+//       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit libero porro hic magni ab eius, provident eligendi voluptatum nesciunt tempore. Assumenda explicabo ea sapiente eaque.',
+//     site_name: 'Test 3',
+//     site_url: 'https://example.com',
+//   },
+//   {
+//     id: '4',
+//     site_desc: 'Lorem ipsum dolor sit amet consectetur',
+//     site_name: 'Test 4',
+//     site_url: 'https://example.com',
+//   },
+// ];
