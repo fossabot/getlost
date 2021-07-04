@@ -17,6 +17,14 @@ export default function Home() {
         <Head>
           <title>GetLost</title>
           <link rel='icon' href='/getlost.png' />
+          <script async defer src='https://sa.ainul.tech/latest.js'></script>
+          <noscript>
+            <img
+              src='https://sa.ainul.tech/noscript.gif'
+              alt=''
+              referrerpolicy='no-referrer-when-downgrade'
+            />
+          </noscript>
         </Head>
         <img src='/getlost.png' alt='' className='w-40 h-40 mx-auto mt-16' />
         <Text
