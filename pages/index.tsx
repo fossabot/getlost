@@ -3,6 +3,8 @@ import Head from 'next/head';
 import Navbar from '@/components/Navbar';
 import FeatureCard from '@/components/FeatureCard';
 import features from '@/lib/features';
+import Image from 'next/image';
+import Logo from '../public/getlost.png';
 
 export default function Home() {
   return (
@@ -14,15 +16,17 @@ export default function Home() {
         <Head>
           <title>GetLost</title>
           <link rel='icon' href='/getlost.png' />
-          <script async defer src='https://sa.ainul.tech/latest.js' />
         </Head>
-        <img
-          src='/getlost.png'
-          alt=''
-          className='mx-auto mt-16'
-          width='160px'
-          height='160px'
-        />
+        <div className='mx-auto mt-16'>
+          <Image
+            src={Logo}
+            alt=''
+            width='160px'
+            height='160px'
+            placeholder='blur'
+            priority={true}
+          />
+        </div>
         <Text
           className='!font-extrabold mt-12 text-5xl sm:text-7xl bg-gradient-to-r from-black via-gray-600 to-gray-500 !text-transparent bg-clip-text'
           h1>
@@ -59,6 +63,7 @@ export default function Home() {
               <FeatureCard
                 key={feature.feature}
                 feature={feature.feature}
+                // eslint-disable-next-line react/no-children-prop
                 children={feature.children}
               />
             );

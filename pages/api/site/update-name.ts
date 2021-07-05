@@ -4,23 +4,17 @@ import {
   UserProfile,
 } from '@auth0/nextjs-auth0';
 import { NextApiRequest, NextApiResponse } from 'next';
-import fetchSitesFromSiteId from '../../utils/getSiteFromSiteId';
+import updateSiteName from 'utils/updateSiteName';
 
 async function fetchSitesApi(req: NextApiRequest, res: NextApiResponse) {
   const { user }: { user: UserProfile } = getSession(req, res);
-  const data = await fetchSitesFromSiteId(
+  console.log(req.body);
+  const data = await updateSiteName(
+    req.body.siteName,
     user.sub,
-    req.query.siteId.toString()
+    req.body.siteId
   );
-
-  if (data == [] || undefined || data.length == 0) {
-    res.json([]);
-    res.end(() => {
-      console.log('process ended');
-    });
-    return;
-  }
-  res.json(data[0]);
+  res.json(data);
 }
 
 export default withApiAuthRequired(fetchSitesApi);

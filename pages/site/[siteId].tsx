@@ -21,24 +21,20 @@ import fetcher from '@/lib/fetcher';
 import useSWR from 'swr';
 import { fromUnixTime, formatDistanceToNow, getUnixTime } from 'date-fns';
 import { useEffect } from 'react';
+import useSites from '@/lib/useSites';
 
 export default withPageAuthRequired(function Site({ user }) {
   const router = useRouter();
 
   useEffect(() => {
     router.prefetch('/dashboard');
-  }, []);
+  }, [router]);
 
   const { siteId } = router.query;
 
-  const data = useSWR(
-    `/api/get-site-from-site-id/?siteId=${siteId}`,
-    fetcher
-  ).data;
+  const { data, error } = useSites(siteId.toString());
 
-  console.log(data);
-
-  if (data === undefined) {
+  if (data?.length == 0) {
     router.replace('/dashboard');
   }
 
@@ -154,7 +150,7 @@ export default withPageAuthRequired(function Site({ user }) {
                       General
                     </>
                   }>
-                  <GeneralSettingsTab />
+                  <GeneralSettingsTab data={data} />
                 </Tabs.Item>
                 <Tabs.Item
                   value='3'

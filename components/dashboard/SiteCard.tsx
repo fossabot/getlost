@@ -1,4 +1,4 @@
-import { Card, Text, Tooltip } from '@geist-ui/react';
+import { Card, Text } from '@geist-ui/react';
 import { SiteCardProps } from '@/lib/interfaces';
 import NextLink from 'next/link';
 
@@ -7,7 +7,7 @@ export default function SiteCard(props: SiteCardProps) {
 
   let shortenedSiteDesc: string;
   if (site_desc?.length > 100) {
-    shortenedSiteDesc = site_desc?.substr(0, 200) + '…';
+    shortenedSiteDesc = site_desc?.substr(0, 150) + '…';
   } else {
     shortenedSiteDesc = site_desc;
   }

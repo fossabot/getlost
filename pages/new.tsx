@@ -25,11 +25,11 @@ export default withPageAuthRequired(function New({ user }) {
 
   useEffect(() => {
     router.prefetch('/dashboard');
-  }, []);
+  }, [router]);
 
   const showErrorMessage = (message: string) => {
     return (
-      <p className='px-3 py-1 text-base text-red-500 border border-red-600 rounded max-w-[384px] bg-red-50'>
+      <p className='px-3 py-1 text-base text-red-500 border border-red-600 rounded max-w-[384px]'>
         {message}
       </p>
     );
@@ -100,7 +100,7 @@ export default withPageAuthRequired(function New({ user }) {
             </Input>
             {errors.site_name &&
               showErrorMessage(
-                'Site name should be at least 2 characters long'
+                'Site name should be at least 2 characters long and 48 characters at most'
               )}
             <Divider />
             <Input

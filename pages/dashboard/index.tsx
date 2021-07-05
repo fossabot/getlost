@@ -3,14 +3,17 @@ import { Breadcrumbs, Row, Text, Card, Loading } from '@geist-ui/react';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import DashboardNavbar from '@/components/dashboard/Navbar';
 import SiteCard from '@/components/dashboard/SiteCard';
-import { SiteCardProps } from '@/lib/interfaces';
 import useSWR from 'swr';
 import fetcher from '@/lib/fetcher';
 import Skeleton from 'react-loading-skeleton';
+import { useRouter } from 'next/router';
+import { HarperDBRecord } from '@/lib/interfaces';
 
 export default withPageAuthRequired(function Dashboard({ user }) {
   const { data, error } = useSWR('/api/fetch-sites', fetcher);
   console.log(data);
+
+  const router = useRouter();
 
   return (
     <div className='w-screen h-screen'>
@@ -26,7 +29,7 @@ export default withPageAuthRequired(function Dashboard({ user }) {
               <Breadcrumbs.Item>GetLost</Breadcrumbs.Item>
               <Breadcrumbs.Item>Dashboard</Breadcrumbs.Item>
               <NextLink href='/dashboard'>
-                <Breadcrumbs.Item nextLink>Sites</Breadcrumbs.Item>
+                <Breadcrumbs.Item nextLink>Sites and Stats</Breadcrumbs.Item>
               </NextLink>
             </Breadcrumbs>
           </div>
@@ -42,9 +45,9 @@ export default withPageAuthRequired(function Dashboard({ user }) {
             />
           )}
           <div>
-            {data?.map((site) => {
+            {data?.map((site: HarperDBRecord) => {
               return (
-                <div className='my-10'>
+                <div key={site.id} className='my-10'>
                   <SiteCard
                     site_desc={site.site_desc}
                     site_name={site.site_name}
@@ -73,6 +76,23 @@ export default withPageAuthRequired(function Dashboard({ user }) {
             </Card>
           </Row>
         </div>
+      </div>
+      <div className='block max-w-md mx-auto lg:hidden'>
+        <Text h2 className='mb-10 font-bold'>
+          Overall stats
+        </Text>
+        <Card type='success'>
+          <Text h4>Successful logins</Text>
+          <Text h3>59</Text>
+        </Card>
+        <Card type='warning' className='!my-4'>
+          <Text h4>Unsuccessful logins</Text>
+          <Text h3>05</Text>
+        </Card>
+        <Card type='secondary'>
+          <Text h4>Last login</Text>
+          <Text h3>12:45 5 June, 2021</Text>
+        </Card>
       </div>
     </div>
   );
