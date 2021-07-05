@@ -1,4 +1,6 @@
 # `GetLost`
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fgetlost-js%2Fgetlost.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fgetlost-js%2Fgetlost?ref=badge_shield)
+
 
 ## Tech stack 📚
 
@@ -12,3 +14,7 @@
 8. SWR - Remote data fetching
 9. Typescript - Type checking
 10. Vercel - Hosting
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fgetlost-js%2Fgetlost.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fgetlost-js%2Fgetlost?ref=badge_large)
